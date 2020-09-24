@@ -1,0 +1,2 @@
+# Textgen
+Text gernerating application 
