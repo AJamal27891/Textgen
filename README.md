@@ -17,13 +17,17 @@ Text generating application using different input sources CSV text and Json powe
   
       - Navigate to the project folder and type ` pip install -r rquirements.txt`
       - pip install tensorflow==2.1
+  > __Download Models :__ 
+  
+    - Navigate to project folder then Model open CMD and type `python download_model.py 117M` 
+    - You can name the model name after download_model.py [325M , 774M, 1558M] 
 
   > __Finally :__ navigate to the project folder run `python app.py`
 
 ## Project interface 
   > __Model options :__
     
-      - Model size [ small = 117M , Medium = 325M, Large = 775M, extra larb= 15B]
+      - Model size [ small = 117M , Medium = 325M, Large = 774M, extra larb= 15B]
       - Text size [the lenth of the generated output ]
       - Number of samples [ the number of samples needed to be generated ] 
       - click submit button to confirm the entry 
