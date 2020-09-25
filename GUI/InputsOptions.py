@@ -28,13 +28,25 @@ def find_method():
         filename  = askopenfilename(filetype=(("CSV Files","*.csv"),))
         find_method.flabel = Label(Input_Option_frame,text=filename,wraplength=110)
         find_method.flabel.place(x=100,y=10)
+        tv = ttk.Treeview(Preview_Option_frame)
+        tv.pack()
+        df = pd.read_csv(filename).to_numpy().tolist()
+        for r in df:
+            print(r)
+            try:
+                tv.insert("",END,r)
+            except :
+                pass
+        return Methods_list.get(ANCHOR), filename
     elif Methods_list.get(ANCHOR) == 'Text Files':
         filename  = askopenfilename(filetype=(("CSV Files","*.csv"),))
         find_method.flabel = Label(Input_Option_frame,text=filename,wraplength=110)
         find_method.flabel.place(x=100,y=10)
+        return Methods_list.get(ANCHOR), filename
     elif Methods_list.get(ANCHOR) == 'Free Text':
         find_method.textbox.place(x=80,y=10)
         print('Free')
+        return Methods_list.get(ANCHOR), find_method.textbox.get()
     elif Methods_list.get(ANCHOR) == 'Web':
         print('Web')
 
@@ -49,6 +61,8 @@ def clear():
     return f.destroy()
 methods = ['CSV Files','Text Files','Free Text','Web']
 Input_Option_frame = LabelFrame(root, text= ' Input Options ', relief=RIDGE,bg ='#708090',padx=5,pady=5,width=310, height=200,fg='#FFFAFA')
+Preview_Option_frame = LabelFrame(root, text= ' Preview ', relief=RIDGE,bg ='#708090',padx=5,pady=5,width=400, height=200*3+10,fg='#FFFAFA')
+
 Methods_list = Listbox(Input_Option_frame,width=10,bd=2)
 Methods_list.config(height=len(methods))
 Choose_Method_bt = Button(Input_Option_frame,text='Select',command = find_method,width=8)
