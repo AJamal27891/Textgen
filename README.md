@@ -1,7 +1,7 @@
 # Textgen
 Text generating application using different input sources CSV text and Json powered by [GPT-2 opent AI](https://openai.com/blog/better-language-models/). 
 
-[![Watch](https://youtube.com/embed/Tk7Q5Udv1eM)
+[![Watch Demo]](https://youtube.com/embed/Tk7Q5Udv1eM)
  
 ## Download instructions 
   > __Download and setup python environment :__ 
