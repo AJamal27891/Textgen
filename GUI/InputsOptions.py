@@ -48,10 +48,10 @@ def clear():
         f = find_method.textbox
     return f.destroy()
 methods = ['CSV Files','Text Files','Free Text','Web']
-Input_Option_frame = LabelFrame(root, text= ' Input Options ', relief=SUNKEN,bg ='#a0d2eb',padx=5,pady=5,width=310, height=200)
+Input_Option_frame = LabelFrame(root, text= ' Input Options ', relief=RIDGE,bg ='#708090',padx=5,pady=5,width=310, height=200,fg='#FFFAFA')
 Methods_list = Listbox(Input_Option_frame,width=10,bd=2)
 Methods_list.config(height=len(methods))
 Choose_Method_bt = Button(Input_Option_frame,text='Select',command = find_method,width=8)
 Clear_Method_bt = Button(Input_Option_frame,text='Clear',command = clear,width=8)
 
-sumbit_input = Button(Input_Option_frame,text='Submit',command= sumbit,bg='green',fg='white',font = ("Times New Roman", 10),highlightcolor='blue')
+sumbit_input = Button(Input_Option_frame,text='Submit',command= sumbit,bg='#89cd87',fg='white',font = ("Times New Roman", 10),highlightcolor='blue')

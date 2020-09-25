@@ -16,7 +16,7 @@ def mop():
 
 
 
-Model_Option_frame = LabelFrame(root, text= ' Model Options ', relief=SUNKEN,bg ='#a0d2eb',padx=5,pady=5,width=310, height=200)
+Model_Option_frame = LabelFrame(root, text= ' Model Options ', relief=RIDGE,bg ='#708090',padx=5,pady=5,width=310, height=200,fg='#FFFAFA')
 ModelSize = StringVar(Model_Option_frame)
 SampelSize = IntVar(Model_Option_frame)
 NumberOfSampels = IntVar(Model_Option_frame)
@@ -28,6 +28,6 @@ Sampel_label  = ttk.Label(Model_Option_frame, text = "Enter sampel number :",fon
 
 model_option_menu = ttk.Combobox(Model_Option_frame,  textvariable = ModelSize)
 model_option_menu['values'] = ('Small generator','Medium generator','Large generator','Extra large generator')
-bt_ok = Button(Model_Option_frame,text='Submit',command= mop,bg='green',fg='white',font = ("Times New Roman", 10),highlightcolor='blue')
+bt_ok = Button(Model_Option_frame,text='Submit',command= mop,bg='#89cd87',fg='white',font = ("Times New Roman", 10),highlightcolor='blue')
 Select_Sampel_Size = Entry(Model_Option_frame,text='Sampel size')
 Select_number_sampels = Entry(Model_Option_frame,text='number of samples')
