@@ -6,8 +6,8 @@ import os
 import numpy as np
 import tensorflow as tf
 import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior() 
-import model, sample, encoder
+tf.disable_v2_behavior()
+from src import model, sample, encoder
 
 def interact_model(
     model_name='117M',
@@ -18,7 +18,7 @@ def interact_model(
     temperature=1,
     top_k=0,
     top_p=1,
-    models_dir='models',
+    models_dir=r'Model\models',texting='test',
 ):
     """
     Interactively run the model
@@ -70,14 +70,15 @@ def interact_model(
         ckpt = tf.train.latest_checkpoint(os.path.join(models_dir, model_name))
         saver.restore(sess, ckpt)
 
-        while True:
-            raw_text = input("Model prompt >>> ")
-            while not raw_text:
-                print('Prompt should not be empty!')
-                raw_text = input("Model prompt >>> ")
-            context_tokens = enc.encode(raw_text)
-            generated = 0
-            for _ in range(nsamples // batch_size):
+        #while True:
+        raw_text = texting
+            # while not raw_text:
+            #     print('Prompt should not be empty!')
+            #     raw_text = input("Model prompt >>> ")
+        context_tokens = enc.encode(raw_text)
+        generated = 0
+        texts = []
+        for _ in range(nsamples // batch_size):
                 out = sess.run(output, feed_dict={
                     context: [context_tokens for _ in range(batch_size)]
                 })[:, len(context_tokens):]
@@ -85,9 +86,9 @@ def interact_model(
                     generated += 1
                     text = enc.decode(out[i])
                     print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
-                    print(text)
-            print("=" * 80)
+                    texts.append(text)
+        return texts
+        print('text was generated',"=" * 80)
 
-if __name__ == '__main__':
-    fire.Fire(interact_model)
-
+# if __name__ == '__main__':
+#     fire.Fire(interact_model)

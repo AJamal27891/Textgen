@@ -12,6 +12,7 @@ def mop():
     n_samples= Select_number_sampels.get()
     response = messagebox.askokcancel(title='Model attributes',message='model size : {}\n Sample size : {} \n Number of sampels: {}'.format(model,sampel_size,n_samples))
     print(response)
+    return (model,sampel_size,n_samples)
 
 
 
