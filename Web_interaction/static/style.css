@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding:  0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    font-family: sans-serif;
+    background: rgb(229,230,236);
+   background: linear-gradient(123deg, rgba(229,230,236,1) 10%,     rgba(152,156,162,0.7988329120710784) 50%, rgba(238,242,249,0.5523343126313025) 90%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:  2fr 2fr 1fr 5fr;
+    grid-template-areas:
+    "nav nav"
+    "choose_m choose_f"
+    "sliders params"
+    "submit ."
+    "output output";
+}
+.nav{
+    grid-area: nav;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+}
+.nav h1{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+}
+.box1{
+    grid-area: choose_m;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: : end;
+
+
+}
+
+.box2{
+    grid-area: choose_f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+}
+#select {
+    width: 100px;
+}
+
+.box3{
+    grid-area: sliders;
+
+}
+.box3 temperature , Top_k{
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+}
+.box5{
+    grid-area: params;
+}
+.box4{
+    grid-area: output;
+}
+
+.box6{
+    grid-area: submit;
+}

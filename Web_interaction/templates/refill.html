@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>TextGen login</title> {% endblock %}
+
+
+{% block body %}
+    <h1>Text generation API interface</h1>
+
+    <form class="box">
+        <h2><span>Refill</span></h2>
+        <input type="name" name="name" placeholder="name">
+        <input type="password" name="password" placeholder="admin token">
+        <input type="password" name="amount" placeholder="amount">
+        <button type="login" name="login" ><span>Refill</span></button>
+    </form>
+
+
+
+{% endblock %}

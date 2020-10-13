@@ -1,0 +1,11 @@
+Flask
+flask_restful
+pymongo
+bcrypt
+numpy
+tensorflow
+requests
+fire
+tqdm
+regex==2017.4.5
+gunicorn

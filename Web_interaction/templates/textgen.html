@@ -1,0 +1,108 @@
+{% extends 'base3.html' %}
+
+{% block head %}
+<title>TextGen login</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="nav">
+    <h1>Text generation API interface</h1>
+</div>
+<div class="box1">
+    <label for="form-control" id='model_size_label'>model size:</label>
+    <div class="Model name">
+        <div class="form-group col-md-4" id='select'>
+            <select id="Model name" class="form-control">
+                <option selected>Choose Model</option>
+                <option value="117M">Small model</option>
+                <option value="345M">Medium model</option>
+                <option value="774M">Large model</option>
+                <option value="1558M">Extra large model</option>
+            </select>
+        </div>
+    </div>
+    <label for="input_format" id='input_format_label'>input format:</label>
+    <div class="input_format">
+        <div class="form-group col-md-4" id='select'>
+            <select id="input_format" class="form-control">
+                <option selected>Choose format</option>
+                <option value="json">Json file</option>
+                <option value="CSV">CSV file</option>
+                <option value="Text">Text file</option>
+                <option value="Free text">Free text</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="box2">
+    <label for="custom-file-input">Selec file from your device:</label>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" >
+      <label class="custom-file-label" for="customFile" id="customFile">Choose file</label>
+    </div>
+
+
+</div>
+
+<div class="box3">
+    <div class="temperature">
+        <label for="temperature">Model crazyness </label>
+        <input type="range" min="0" max="100" value="50" name='temperature' id='temp'>
+
+
+    </div>
+    <p>Value:<span id='value'></span></p>
+
+    <script>
+
+        console.log('hello')
+        console.log(document.getElementById('temp').value)
+        const slidervalue = document.getElementById('value');
+        const inputslider = document.getElementById('temp');
+        inputslider.oninput = function (){
+            slidervalue.innerHTML=this.value;}
+        inputslider.addeventlistner("mousemove",function(){
+            let x = inputslider.value;
+            let color = 'linear-gradiant(90deg,rgb(117,252,117)'+x+'%,rgb(214,214,214)'+x='%)';
+            inputslider.style.background = color
+        })
+    </script>
+    <div class="Top_k">
+        <label for="Top_k"> Model randomness</label>
+        <input type="range" min='0' max="40" value="0" name="top_k" id='k'>
+
+    </div>
+    <p>Value:<span id='value'></span></p>
+
+    <script>
+
+        console.log('hello')
+        console.log(document.getElementById('temp').value)
+        const slidervalue = document.getElementById('value');
+        const inputslider = document.getElementById('k');
+        inputslider.oninput = function (){
+            slidervalue.innerHTML=this.value;}
+        inputslider.addeventlistner("mousemove",function(){
+            let x = inputslider.value;
+            let color = 'linear-gradiant(90deg,rgb(117,252,117)'+x+'%,rgb(214,214,214)'+x='%)';
+            inputslider.style.background = color
+        })
+    </script>
+
+</div>
+
+<div class="box5">
+    <input type="text" name="n-samples" placeholder="Number of text">
+    <input type="text" name="sample_length" placeholder="length of the text">
+</div>
+
+<div class="box6">
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+{% endblock %}
