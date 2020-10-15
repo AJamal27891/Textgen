@@ -7,7 +7,11 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
-from src import model, sample, encoder
+import sys
+sys.path.append('/usr/src/app/Model/src')
+sys.path.append('/usr/src/app/Model/models')
+from Model.src import model, sample, encoder
+
 
 def interact_model(
     model_name='117M',
@@ -18,7 +22,7 @@ def interact_model(
     temperature=1,
     top_k=0,
     top_p=1,
-    models_dir=r'Model\models',texting='test',
+    models_dir=r'Model/models',texting='test',
 ):
     """
     Interactively run the model
@@ -40,10 +44,6 @@ def interact_model(
      :models_dir : path to parent folder containing model subfolders
      (i.e. contains the <model_name> folder)
     """
-    models_dir = os.path.expanduser(os.path.expandvars(models_dir))
-    if batch_size is None:
-        batch_size = 1
-    assert nsamples % batch_size == 0
 
     enc = encoder.get_encoder(model_name, models_dir)
     hparams = model.default_hparams()
@@ -85,10 +85,8 @@ def interact_model(
                 for i in range(batch_size):
                     generated += 1
                     text = enc.decode(out[i])
-                    print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
                     texts.append(text)
         return texts
-        print('text was generated',"=" * 80)
 
 # if __name__ == '__main__':
 #     fire.Fire(interact_model)

@@ -2,8 +2,9 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
-
-from src.hparams import HParams
+import sys
+sys.path.append('/usr/src/app/Model/src')
+from Model.src.hparams import HParams
 
 def default_hparams():
     return HParams(

@@ -2,9 +2,9 @@
 
 import os
 import json
-import regex as re
+#import regex as re
 from functools import lru_cache
-
+import regex as re
 @lru_cache()
 def bytes_to_unicode():
     """
