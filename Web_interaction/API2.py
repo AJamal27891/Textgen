@@ -159,7 +159,7 @@ class TextGen(Resource):
                 }
             })
 
-            return jsonify(generateReturnDictionary(200, text))
+            return jsonify(generateReturnDictionary(201, text))
 
 
 class Refill(Resource):
@@ -187,7 +187,7 @@ class Refill(Resource):
                     "Tokens": amount
                 }
             })
-            return jsonify(generateReturnDictionary(200, "Refilled"))
+            return jsonify(generateReturnDictionary(204, "Refilled"))
 
 
 class Del(Resource):
@@ -200,7 +200,7 @@ class Del(Resource):
             return jsonify(retJson)
         else:
             users.delete_one({"Username":username})
-            return jsonify(generateReturnDictionary(200, "User %s was deleted"%username))
+            return jsonify(generateReturnDictionary(202, "User %s was deleted"%username))
 
 class AdDel(Resource):
     def delete(self):
@@ -208,10 +208,10 @@ class AdDel(Resource):
         username = postedData["username"]
         password = postedData["admin_pw"]
         if password != admin_pw:
-            return jsonify(generateReturnDictionary(302, "Incorrect Password"))
+            return jsonify(generateReturnDictionary(304, "Incorrect Admin token"))
         else:
             users.delete_one({"Username":username})
-            return jsonify(generateReturnDictionary(200, "User %s was deleted by admin"%username))
+            return jsonify(generateReturnDictionary(203, "User %s was deleted by admin"%username))
 
 
 class AllUsers(Resource):
@@ -220,11 +220,33 @@ class AllUsers(Resource):
         username = postedData["username"]
         password = postedData["admin_pw"]
         if password != admin_pw:
-            return jsonify(generateReturnDictionary(302, "Incorrect Password"))
+            return jsonify(generateReturnDictionary(304, "Incorrect Admin token"))
         else:
             data =  [doc for doc in users.find({},{"Username":1,"_id": 0})]
             return jsonify(data)
 
+class Usertext(Resource):
+    def get(self ):
+        postedData = request.get_json()
+        username = postedData["username"]
+        password = postedData["password"]
+        retJson, error = verifyCredentials(username, password)
+        if error:
+            return jsonify(retJson)
+        else:
+            data =  [doc for doc in users.find({'username':username},{"OutputText":1,"_id": 0})]
+            return jsonify(data)
+
+class AdminUsertext(Resource):
+    def get(self ):
+        postedData = request.get_json()
+        username = postedData["username"]
+        password = postedData["admin_pw"]
+        if password != admin_pw:
+            return jsonify(generateReturnDictionary(302, "Incorrect Password"))
+        else:
+            data =  [doc for doc in users.find({},{"OutputText":1,"_id": 0})]
+            return jsonify(data)
 
 class welcome(Resource):
      def get(self):
@@ -242,7 +264,8 @@ api.add_resource(Refill, '/refill')
 api.add_resource(Del,'/deleteuser')
 api.add_resource(AdDel,'/admindeleteuser')
 api.add_resource(AllUsers,'/allusers')
-
+api.add_resource(Usertext,'/usertext')
+api.add_resource(AdminUsertext,'/admintext')
 
 
 if __name__=="__main__":

@@ -4,5 +4,166 @@
 {% endblock %}
 
 {% block body %}
-<p>This is the body the cantins instructios and codes </p>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="card">
+          <div class="card-header">
+            Text Generator API
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">This is the body the cantins instructios and codes  this API is used for sending a title for an article and returning a blog recommendation you can control the following using this api the randomness of the text by the temperature the probablity of the text by the top_k and the length of the text by legnth</h5>
+            <table class="table table-sm table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Method</th>
+                  <th scope="col">Fields</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Link</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">Register</th>
+                      <td>Post</td>
+                      <td>"name","passowrd","email"</td>
+                      <td>This request register new user with 10 tokens</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Register</th>
+                      <td>Post</td>
+                      <td>"name","passowrd","email"</td>
+                      <td>This reuest register new user with 10 tokens</td>
+                      <td><link href="./register"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Text generator</th>
+                      <td>Post</td>
+                      <td>"username","passowrd","in_text","nsamples","model_name","temperature","top_k","length"</td>
+                      <td>This request send the title text to the model with contorls</td>
+                      <td><link href="./TextGen"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Refill</th>
+                      <td>Post</td>
+                      <td>"name","admin_pw","amount"</td>
+                      <td>This request refill the token to a certain user name using admin token</td>
+                      <td><link href="./refill"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Delete user </th>
+                      <td>Delete</td>
+                      <td>"name","password"</td>
+                      <td>This re1uest allow user to delte himself</td>
+                      <td><link href="./deleteuser"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Admin delete user </th>
+                      <td>Delte</td>
+                      <td>"name","admin_pw"</td>
+                      <td>This request allow admin to delte a certin user</td>
+                      <td><link href="./admindeleteuser"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Return all users </th>
+                      <td>Get</td>
+                      <td>"name","admin_pw"</td>
+                      <td>This request allow admin to get all users using admin token</td>
+                      <td><link href="./allusers"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Retun generated text  </th>
+                      <td>Get</td>
+                      <td>"name","password"</td>
+                      <td>This request allow user to return his text from database</td>
+                      <td><link href="./usertext"></td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Admin return all generated  text  by all users</th>
+                      <td>Get</td>
+                      <td>"name","admin_pw"</td>
+                      <td>This request allow admin to return all generated text from database</td>
+                      <td><link href="./admintext"></td>
+                  </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Error codes and messages
+        </div>
+        <div class="card-body">
+            <table class="table table-sm table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Code 200</th>
+                        <td>"You successfully signed up for the API"</td>
+                        <td>This code when returns after chacking for available users</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 201</th>
+                        <td>{generated text}</td>
+                        <td>This code returns when successfully generated text</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 202</th>
+                        <td>"User {username} was successfully deleted"</td>
+                        <td>This code when returns user delete his own access</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 203</th>
+                        <td>"User {username} was successfully deleted by Admin"</td>
+                        <td>This code  returns when admin successfully delted the user</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 204</th>
+                        <td>"Refilled"</td>
+                        <td>This code  returns when admin successfully Refill user's token</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Code 301</th>
+                        <td>"Ivaild username"</td>
+                        <td>This code returns when the username is already exists</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 302</th>
+                        <td>"Incorrect password"</td>
+                        <td>This code returns when checking the passowrd</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 303</th>
+                        <td>"Not Enough Tokens"</td>
+                        <td>This code returns when there is not enough tokens left</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Code 304</th>
+                        <td>"Incorrect Admin token"</td>
+                        <td>This code returns when the admin token is incorrect</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+</div>
 {% endblock %}
