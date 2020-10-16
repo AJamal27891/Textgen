@@ -3,19 +3,19 @@ import sys
 import requests
 from tqdm import tqdm
 
-# if len(sys.argv) != 2:
-#     print('You must enter the model name as a parameter, e.g.: download_model.py 124M')
-#     sys.exit(1)
-#
-# model = sys.argv[1]
-models = ['124M']
-for model in models:
-    subdir = os.path.join('models', model)
-    if not os.path.exists(subdir):
-        os.makedirs(subdir)
+if len(sys.argv) != 2:
+     print('You must enter the model name as a parameter, e.g.: download_model.py 124M')
+     sys.exit(1)
+
+model = sys.argv[1]
+#models = ['124M']
+
+subdir = os.path.join('models', model)
+if not os.path.exists(subdir):
+    os.makedirs(subdir)
     subdir = subdir.replace('\\','/') # needed for Windows
 
-    for filename in ['checkpoint','encoder.json','hparams.json','model.ckpt.data-00000-of-00001', 'model.ckpt.index', 'model.ckpt.meta', 'vocab.bpe']:
+for filename in ['checkpoint','encoder.json','hparams.json','model.ckpt.data-00000-of-00001', 'model.ckpt.index', 'model.ckpt.meta', 'vocab.bpe']:
 
         r = requests.get("https://storage.googleapis.com/gpt-2/" + subdir + "/" + filename, stream=True)
 
